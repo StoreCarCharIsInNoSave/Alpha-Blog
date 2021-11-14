@@ -11,9 +11,7 @@
   </head>
 
   <body>
-    <% if flash[:notice] %>
-        <%= flash[:notice] %>
-    <% end %>
+    <%= render 'layouts/messages' %>
 
     <%= yield %>
   </body>
