@@ -1,27 +1,29 @@
-<% if @article.errors.any? %>
-<h2>The following errors prevented the article from being saved</h2>
-<ul>
-    <% @article.errors.full_messages.each do |msg| %>
-    <li><%=msg%></li>
+<div class="container">
+    <% if @article.errors.any? %>
+    <h2>The following errors prevented the article from being saved</h2>
+    <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+        <li><%=msg%></li>
+        <% end %>
+    </ul>
+
+    <%end%>
 
 
-    <% end %>
-</ul>
-  
-<%end%>
 
-
-<%= form_with(model: @article, local: true)  do |f| %>
-<p>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-</p>
-<p>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-</p>
-<p>
-    <%= f.submit %>
+    <%= form_with(model: @article, local: true)  do |f| %>
+        <div class="form-handler w-50 mx-auto shadow p-3 mb-5 bg-info rounded">
+            <div class="mb-3">
+                <%= f.label :title, class: 'form-label text-white' %>
+                <%= f.text_field :title, class: 'form-control text-muted', placeholder: 'Title of article' %>
+            </div>
+            <div class="mb-3">
+                <%= f.label :Description, class: 'col-form-label text-white' %>
+                <%= f.text_area :description, rows: 10, class: 'form-control text-muted', placeholder: 'Description of article' %>
+            </div>
     
-</p>
-<% end %>
+            <button type="submit" class="btn btn-outline-light">Post</button>
+        </div>
+    <% end %>
+
+</div>
