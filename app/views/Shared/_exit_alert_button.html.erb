@@ -1,0 +1,11 @@
+<script>
+    //по неизвестной мне причине, bootstrap крестик не закрывает alert, полагаю, что js не подтягивается, поэтому решил сделать это так.
+    function DisposeAlert() {
+        let elements = document.getElementsByClassName("alert");
+        while(elements.length > 0){
+            elements[0].parentNode.removeChild(elements[0]);
+        }
+    }
+</script>
+
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="DisposeAlert()"></button>

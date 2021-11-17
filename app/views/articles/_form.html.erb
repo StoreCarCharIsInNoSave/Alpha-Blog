@@ -1,18 +1,10 @@
 <div class="container">
-    <% if @article.errors.any? %>
-    <h2>The following errors prevented the article from being saved</h2>
-    <ul>
-        <% @article.errors.full_messages.each do |msg| %>
-        <li><%=msg%></li>
-        <% end %>
-    </ul>
-
-    <%end%>
-
+   
 
 
     <%= form_with(model: @article, local: true)  do |f| %>
         <div class="form-handler w-50 mx-auto shadow p-3 mb-5 bg-info rounded">
+            <%= render 'Shared/errors' %>
             <div class="mb-3">
                 <%= f.label :title, class: 'form-label text-white' %>
                 <%= f.text_field :title, class: 'form-control text-muted', placeholder: 'Title of article' %>

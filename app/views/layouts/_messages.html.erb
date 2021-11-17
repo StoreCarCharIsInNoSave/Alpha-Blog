@@ -1,3 +1,8 @@
-<% if flash[:notice] %>
-    <%= flash[:notice] %>
-<% end %>
+<div class="container">
+    <% if flash[:notice] %>
+    <div class="alert alert-success " role="alert">
+        <%= render 'Shared/exit_alert_button'%>
+        <h4 class="alert-heading"><%= flash[:notice] %></h4>
+    </div>
+    <% end %>
+</div>
