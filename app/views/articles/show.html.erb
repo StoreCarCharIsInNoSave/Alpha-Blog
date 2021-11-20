@@ -5,9 +5,11 @@
     <div class="col-8 mt-4">
       <div class="card text-center shadow mb-5 bg-white rounded">
         <div class="card-header">
-          by <%=@article.user.username%>
+          by <%=link_to @article.user.username, user_path(@article.user), class: 'text-decoration-none'%>
+          <%=gravatar_for(@article.user)%>
         </div>
         <div class="card-body">
+          
           <div class="card-text text-start"><%=simple_format(@article.description) %></div>
           <%= link_to 'Edit', article_path(@article)+'/edit', class: 'btn btn-outline-info'%>
           <%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are u shure?"}, class: 'btn btn-outline-danger'%>
