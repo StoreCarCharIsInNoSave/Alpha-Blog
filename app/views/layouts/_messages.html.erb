@@ -5,4 +5,10 @@
         <h4 class="alert-heading"><%= flash[:notice] %></h4>
     </div>
     <% end %>
+    <% if flash[:danger] %>
+    <div class="alert alert-danger " role="alert">
+        <%= render 'Shared/exit_alert_button'%>
+        <h4 class="alert-heading"><%= flash[:danger] %></h4>
+    </div>
+    <% end %>
 </div>

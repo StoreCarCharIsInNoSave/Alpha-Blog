@@ -13,8 +13,11 @@
         <p class="card-text"><%= truncate(article.description, length:100) %></p>
         
         <%=link_to 'Show', article, class: 'btn btn-outline-success' %>
-        <%=link_to 'Edit', article_path(article)+'/edit', class: 'btn btn-outline-info'%>
-        <%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: "Are u shure?"}, class: 'btn btn-outline-danger'%>
+
+        <%if logged_in? && (article.user==current_user || current_user.admin)%>
+          <%=link_to 'Edit', article_path(article)+'/edit', class: 'btn btn-outline-info'%>
+          <%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: "Are u shure?"}, class: 'btn btn-outline-danger'%>
+          <%end%>
       </div>
       <div class="card-footer text-muted">
         <small> Created <%= time_ago_in_words(article.created_at) %> ago,
