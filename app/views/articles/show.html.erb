@@ -1,25 +1,33 @@
-<h2 class="text-center text-decoration-none mt-4"><%=@article.title%></h2>
+<h2 class="text-center text-decoration-none mt-4"><%= @article.title %></h2>
 <div class="container">
 
   <div class="row justify-content-md-center ">
     <div class="col-8 mt-4">
       <div class="card text-center shadow mb-5 bg-white rounded">
         <div class="card-header">
-          by <%=link_to @article.user.username, user_path(@article.user), class: 'text-decoration-none'%>
-          <%=gravatar_for(@article.user)%>
+          by <%= link_to @article.user.username, user_path(@article.user), class: 'text-decoration-none' %>
+
+          <%= gravatar_for(@article.user) %>
+          <% if @article.categories.any? %>
+            <div class="mt-2">
+              <%= render  @article.categories %>
+            </div>
+          <% end %>
+
+
         </div>
         <div class="card-body">
-          
-          <div class="card-text text-start"><%=simple_format(@article.description) %></div>
-    
-          <%if logged_in? && @article.user==current_user%>
-          <%= link_to 'Edit', article_path(@article)+'/edit', class: 'btn btn-outline-info'%>
-          <%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are u shure?"}, class: 'btn btn-outline-danger'%>
-          <%end%>
+
+          <div class="card-text text-start"><%= simple_format(@article.description) %></div>
+
+          <% if logged_in? && @article.user == current_user %>
+            <%= link_to 'Edit', article_path(@article) + '/edit', class: 'btn btn-outline-info' %>
+            <%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: "Are u shure?" }, class: 'btn btn-outline-danger' %>
+          <% end %>
         </div>
         <div class="card-footer text-muted">
           <small> Created <%= time_ago_in_words(@article.created_at) %> ago,
-            edited <%=time_ago_in_words(@article.updated_at)%> ago</small>
+            edited <%= time_ago_in_words(@article.updated_at) %> ago</small>
         </div>
       </div>
     </div>
